@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        3D Printer Booking
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f2f3f5;
+
+            color: #222;
+        }
+
+
+        /* =====================================
+           LOGIN
+        ===================================== */
+
+        #loginScreen {
+
+            width: 380px;
+
+            max-width:
+                calc(100% - 30px);
+
+            margin:
+                100px auto;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(0, 0, 0, 0.12);
+        }
+
+
+        #loginScreen h1 {
+
+            margin-top: 0;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================
+           INPUTS
+        ===================================== */
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 11px;
+
+            margin-top: 5px;
+
+            margin-bottom: 14px;
+
+            border:
+                1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+
+            background: white;
+        }
+
+
+        textarea {
+
+            min-height: 70px;
+
+            resize: vertical;
+        }
+
+
+        label {
+
+            font-size: 13px;
+
+            color: #555;
+        }
+
+
+        /* =====================================
+           BUTTONS
+        ===================================== */
+
+        button {
+
+            border: none;
+
+            border-radius: 6px;
+
+            padding:
+                10px 15px;
+
+            background: #222;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        button:hover {
+
+            background: #444;
+        }
+
+
+        button.danger {
+
+            background: #c62828;
+        }
+
+
+        button.danger:hover {
+
+            background: #a51d1d;
+        }
+
+
+        button.secondary {
+
+            background: #777;
+        }
+
+
+        /* =====================================
+           MESSAGES
+        ===================================== */
+
+        .message {
+
+            min-height: 20px;
+
+            margin-top: 10px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+
+        .success {
+
+            color: #168038;
+        }
+
+
+        .error {
+
+            color: #c62828;
+        }
+
+
+        /* =====================================
+           APPLICATION
+        ===================================== */
+
+        #application {
+
+            display: none;
+        }
+
+
+        .header {
+
+            height: 64px;
+
+            padding:
+                0 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            background: #222;
+
+            color: white;
+        }
+
+
+        .header-title {
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+
+        .header-user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .role {
+
+            padding:
+                5px 10px;
+
+            background: #555;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================
+           CONTENT
+        ===================================== */
+
+        .content {
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+            padding: 25px;
+        }
+
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(350px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.07);
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            font-size: 19px;
+        }
+
+
+        /* =====================================
+           PRINTERS
+        ===================================== */
+
+        .printer {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 7px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .printer-info strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+        }
+
+
+        .printer-info small {
+
+            color: #777;
+        }
+
+
+        /* =====================================
+           TABLE
+        ===================================== */
+
+        .table-container {
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse:
+                collapse;
+
+            font-size: 14px;
+        }
+
+
+        th,
+        td {
+
+            padding: 10px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid #ddd;
+
+            white-space:
+                nowrap;
+        }
+
+
+        th {
+
+            background: #f5f5f5;
+        }
+
+
+        tr.my-booking {
+
+            background: #f7fbff;
+        }
+
+
+        .actions {
+
+            display: flex;
+
+            gap: 5px;
+        }
+
+
+        /* =====================================
+           ADMIN
+        ===================================== */
+
+        #adminPanel {
+
+            display: none;
+        }
+
+
+        .admin-section {
+
+            margin-top: 20px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (
+            max-width: 700px
+        ) {
+
+            .header {
+
+                height: auto;
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                align-items:
+                    flex-start;
+
+                gap: 10px;
+            }
+
+
+            .content {
+
+                padding: 10px;
+            }
+
+
+            .grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     LOGIN
+=================================================== -->
+
+<div id="loginScreen">
+
+    <h1>
+        3D Printer Booking
+    </h1>
+
+
+    <input
+        id="login"
+        type="text"
+        placeholder="Логин"
+        autocomplete="username"
+    >
+
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Пароль"
+        autocomplete="current-password"
+    >
+
+
+    <button
+        id="loginButton"
+        style="width:100%;"
+    >
+        Войти
+    </button>
+
+
+    <div
+        id="loginMessage"
+        class="message"
+    ></div>
+
+</div>
+
+
+<!-- ==================================================
+     APPLICATION
+=================================================== -->
+
+<div id="application">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-title">
+
+            3D Printer Booking
+
+        </div>
+
+
+        <div class="header-user">
+
+            <span
+                id="currentUser"
+            ></span>
+
+
+            <span
+                id="currentRole"
+                class="role"
+            ></span>
+
+
+            <button
+                id="logoutButton"
+                class="secondary"
+            >
+                Выйти
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+
+        <!-- ==================================================
+             BOOKING + PRINTERS
+        =================================================== -->
+
+        <div class="grid">
+
+
+            <!-- BOOKING -->
+
+            <section class="card">
+
+                <h2>
+                    Новое бронирование
+                </h2>
+
+
+                <label>
+                    Принтер
+                </label>
+
+
+                <select
+                    id="bookingPrinter"
+                ></select>
+
+
+                <label>
+                    Начало
+                </label>
+
+
+                <input
+                    id="bookingStart"
+                    type="datetime-local"
+                >
+
+
+                <label>
+                    Конец
+                </label>
+
+
+                <input
+                    id="bookingEnd"
+                    type="datetime-local"
+                >
+
+
+                <label>
+                    Комментарий
+                </label>
+
+
+                <textarea
+                    id="bookingComment"
+                    placeholder="Что будете печатать?"
+                ></textarea>
+
+
+                <button
+                    id="bookingButton"
+                >
+                    Забронировать
+                </button>
+
+
+                <div
+                    id="bookingMessage"
+                    class="message"
+                ></div>
+
+            </section>
+
+
+            <!-- PRINTERS -->
+
+            <section class="card">
+
+                <h2>
+                    3D-принтеры
+                </h2>
+
+
+                <div
+                    id="printersList"
+                ></div>
+
+            </section>
+
+        </div>
+
+
+        <!-- ==================================================
+             SCHEDULE
+        =================================================== -->
+
+        <section
+            class="card"
+            style="margin-top:20px;"
+        >
+
+            <h2>
+                Расписание
+            </h2>
+
+
+            <div
+                class="table-container"
+            >
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Принтер
+                            </th>
+
+                            <th>
+                                Пользователь
+                            </th>
+
+                            <th>
+                                Начало
+                            </th>
+
+                            <th>
+                                Конец
+                            </th>
+
+                            <th>
+                                Комментарий
+                            </th>
+
+                            <th>
+                                Действия
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="bookingsTable"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+       ```html
+<!-- ==================================================
+     ADMIN PANEL
+=================================================== -->
+
+<div id="adminPanel">
+
+
+    <!-- ==================================================
+         USERS LIST
+    =================================================== -->
+
+    <section
+        class="card admin-section"
+    >
+
+        <h2>
+            Пользователи
+        </h2>
+
+
+        <div
+            class="table-container"
+        >
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Логин
+                        </th>
+
+                        <th>
+                            Роль
+                        </th>
+
+                        <th>
+                            Создан
+                        </th>
+
+                        <th>
+                            Действия
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="usersTable"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ADD USER
+    =================================================== -->
+
+    <section
+        class="card admin-section"
+    >
+
+        <h2>
+            Добавить пользователя
+        </h2>
+
+
+        <input
+            id="newUserLogin"
+            type="text"
+            placeholder="Логин"
+        >
+
+
+        <input
+            id="newUserPassword"
+            type="password"
+            placeholder="Пароль"
+        >
+
+
+        <select
+            id="newUserRole"
+        >
+
+            <option value="User">
+                User — обычный пользователь
+            </option>
+
+            <option value="Admin">
+                Admin — администратор
+            </option>
+
+        </select>
+
+
+        <button
+            id="createUserButton"
+        >
+            Добавить пользователя
+        </button>
+
+
+        <div
+            id="createUserMessage"
+            class="message"
+        ></div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ADD PRINTER
+    =================================================== -->
+
+    <section
+        class="card admin-section"
+    >
+
+        <h2>
+            Добавить 3D-принтер
+        </h2>
+
+
+        <input
+            id="newPrinterName"
+            type="text"
+            placeholder="Название принтера"
+        >
+
+
+        <input
+            id="newPrinterDescription"
+            type="text"
+            placeholder="Описание"
+        >
+
+
+        <button
+            id="addPrinterButton"
+        >
+            Добавить принтер
+        </button>
+
+
+        <div
+            id="adminPrinterMessage"
+            class="message"
+        ></div>
+
+    </section>
+
+
+</div>
+
+
+
+<script src="client.js"></script>
+
+</body>
+
+</html>
