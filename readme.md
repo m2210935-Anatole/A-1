@@ -288,9 +288,13 @@ printers
 
 [https://github.com/m2210935-Anatole/A-1/issues/7](https://github.com/user-attachments/assets/e5472d67-8f2f-451c-9bee-fbb10ff8bd0a)
 
-Admin может выбрать другого пользователя.
+Admin может бронировать для себя, так и выбрать другого пользователя.
 
-[https://github.com/m2210935-Anatole/A-1/issues/6](https://github.com/user-attachments/assets/857da1c6-ed30-4285-be06-a0b8646d13b4)
+[https://github.com/user-attachments/assets/857da1c6-ed30-4285-be06-a0b8646d13b4](https://github.com/user-attachments/assets/5408af15-34f1-406a-9612-1d651e5030cf)
+
+а так же удалять чужие бронирования
+
+[https://github.com/m2210935-Anatole/A-1/issues/9](https://github.com/user-attachments/assets/9386a3bd-f90b-4d4a-ac97-bfc9c5930aba)
 
 ---
 
