@@ -290,6 +290,8 @@ printers
 
 Admin может выбрать другого пользователя.
 
+[https://github.com/m2210935-Anatole/A-1/issues/6](https://github.com/user-attachments/assets/857da1c6-ed30-4285-be06-a0b8646d13b4)
+
 ---
 
 # Проверка пересечения
