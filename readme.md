@@ -200,7 +200,7 @@ Password: 1234
 Login: user
 Password: 1234
 ```
-https://github.com/user-attachments/assets/eb72238a-feae-4739-870c-229ddb050ffa
+[https://github.com/user-attachments/assets/eb72238a-feae-4739-870c-229ddb050ffa](https://github.com/m2210935-Anatole/A-1/issues/4#issue-5565012017)
 ---
 
 # База данных
