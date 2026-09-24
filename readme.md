@@ -412,13 +412,6 @@ MIT License
 
 **Anatoly Shamshura**
 
-
-GitHub:
-
-```text
-https://github.com/USERNAME
-```
-
 ---
 
 ## Запуск в двух командах
