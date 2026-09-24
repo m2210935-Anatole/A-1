@@ -360,7 +360,8 @@ AND end_time > ?
 
 Только Admin:
 
-[https://github.com/m2210935-Anatole/A-1/issues/13](https://github.com/user-attachments/assets/6e6ef56f-2cb8-4542-8c63-d94c0591a2b4)
+[https://github.com/m2210935-Anatole/A-1/issues/14](https://github.com/user-attachments/assets/844e9f7a-493a-412e-9716-a913d6be5193)
+
 ---
 
 # Права доступа
