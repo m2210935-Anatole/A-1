@@ -340,50 +340,11 @@ AND end_time > ?
 
 ---
 
-# WebSocket API
-
-Клиент и сервер обмениваются JSON-сообщениями через WebSocket.
-
-## Авторизация
-
-Клиент:
-
-```json
-{
-    "type": "login",
-    "login": "admin",
-    "password": "1234"
-}
-```
-
-Сервер:
-
-```json
-{
-    "type": "loginResult",
-    "success": true,
-    "user": {
-        "id": 1,
-        "login": "admin",
-        "role": "Admin"
-    }
-}
-```
-
----
-
 ## Создание пользователя
 
 Только Admin:
 
-```json
-{
-    "type": "createUser",
-    "login": "newuser",
-    "password": "12345",
-    "role": "User"
-}
-```
+[https://github.com/m2210935-Anatole/A-1/issues/10](https://github.com/user-attachments/assets/68950741-4325-4e1c-935a-23657c870a3b)
 
 ---
 
@@ -391,87 +352,15 @@ AND end_time > ?
 
 Только Admin:
 
-```json
-{
-    "type": "deleteUser",
-    "userId": 4
-}
-```
+[https://github.com/m2210935-Anatole/A-1/issues/11](https://github.com/user-attachments/assets/8d8a4a05-a57f-4fcb-99f2-b431c3c0e97a)
 
 ---
 
-## Добавление принтера
+## Добавление принтера и удаление принтера
 
 Только Admin:
 
-```json
-{
-    "type": "addPrinter",
-    "name": "Bambu Lab X1C",
-    "description": "FDM 3D-принтер"
-}
-```
-
----
-
-## Удаление принтера
-
-Только Admin:
-
-```json
-{
-    "type": "deletePrinter",
-    "printerId": 2
-}
-```
-
----
-
-## Создание бронирования
-
-```json
-{
-    "type": "createBooking",
-    "printerId": 1,
-    "startTime": "2026-09-18T10:00",
-    "endTime": "2026-09-18T12:00",
-    "comment": "Печать корпуса"
-}
-```
-
----
-
-## Удаление бронирования
-
-Admin может удалить любое бронирование.
-
-User может удалить только своё.
-
-```json
-{
-    "type": "deleteBooking",
-    "bookingId": 10
-}
-```
-
----
-
-## Изменение бронирования
-
-Только Admin:
-
-```json
-{
-    "type": "updateBooking",
-    "bookingId": 10,
-    "printerId": 2,
-    "userId": 3,
-    "startTime": "2026-09-18T14:00",
-    "endTime": "2026-09-18T16:00",
-    "comment": "Изменённое бронирование"
-}
-```
-
+[https://github.com/m2210935-Anatole/A-1/issues/13](https://github.com/user-attachments/assets/6e6ef56f-2cb8-4542-8c63-d94c0591a2b4)
 ---
 
 # Права доступа
