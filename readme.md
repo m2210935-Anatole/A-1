@@ -294,7 +294,7 @@ Admin может выбрать другого пользователя.
 
 Сервер не позволяет создать две брони на один принтер в одно время.
 
-https://github.com/m2210935-Anatole/A-1/issues/1#issue-5564883242
+[https://github.com/m2210935-Anatole/A-1/issues/1#issue-5564883242](https://github.com/user-attachments/assets/93dba97a-9ea4-41da-8922-6c3c75a93b4d)
 
 Используется проверка:
 
