@@ -286,6 +286,8 @@ printers
 
 Для обычного пользователя бронирование автоматически создаётся от его имени.
 
+[https://github.com/m2210935-Anatole/A-1/issues/5](https://github.com/user-attachments/assets/98fa3209-db68-4846-8226-e9c4c2b2851f)
+
 Admin может выбрать другого пользователя.
 
 ---
