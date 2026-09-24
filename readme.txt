@@ -163,6 +163,8 @@ User:
 Login: user
 Password: 1234
 
+https://github.com/user-attachments/assets/751748ec-488c-4660-bfd5-de37a2c40d8d
+
 База данных
 
 Используется SQLite.
